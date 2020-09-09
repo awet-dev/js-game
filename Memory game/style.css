@@ -3,8 +3,8 @@
 /*# sourceMappingURL=style.css.map */
 .flip-card {
     background-color: transparent;
-    width: 300px;
-    height: 300px;
+    width: fit-content;
+    height: fit-content;
     perspective: 1000px;
 }
 
