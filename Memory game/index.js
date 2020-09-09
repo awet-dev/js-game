@@ -1,6 +1,7 @@
 // selected html elements
 let images = document.querySelectorAll("img");
 
+/*
 // array of the image src to be display
 const srcImg = ["img1.jpg", "img2.jpg"];
 
@@ -26,11 +27,16 @@ const displayImage = ()=> {
     }
 
 };
+ */
 
 // listen to the click event of the card
-Array.from(images).forEach(image => {
-    image.addEventListener("click", displayImage);
+Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
+    card.addEventListener("click", ()=> {
+        console.log(card.id);
+
+    });
 })
+
 
 
 // on click call the displayImage function
@@ -53,6 +59,7 @@ Array.from(images).forEach(image => {
 // then check if they are the same
 // if they do display the second card
 // if they don't close both
+
 
 
 
