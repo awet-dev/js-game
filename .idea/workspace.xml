@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c0f759e-e504-4c8b-bfba-a89e0b20ba87" name="Default Changelist" comment="" />
+    <list default="true" id="7c0f759e-e504-4c8b-bfba-a89e0b20ba87" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/game-1/0.Rock-scissors-paper.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-2/1.21-card-game.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-3/2.Memory-game.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-4/3.Moving-block-game.md" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599635689236</updated>
-      <workItem from="1599635690382" duration="301000" />
+      <workItem from="1599635690382" duration="757000" />
     </task>
     <servers />
   </component>
