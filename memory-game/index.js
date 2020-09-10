@@ -1,4 +1,3 @@
-
 /* listen to the click event of specifically clicked card by selecting it with its ID
 And call the flipCard function */
 let cardArray = Array.from(document.querySelectorAll(".flip-card"));
@@ -61,7 +60,6 @@ const flipCard = (imageId)=> {
 
     }
 }
-
 
 
 
