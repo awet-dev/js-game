@@ -1,5 +1,3 @@
-// selected html elements
-let images = document.querySelectorAll("img");
 
 /*
 // array of the image src to be display
@@ -28,15 +26,31 @@ const displayImage = ()=> {
 
 };
  */
+// selected html elements
+let images = document.querySelectorAll("img");
 
 // listen to the click event of the card
 Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
     card.addEventListener("click", ()=> {
-        console.log(card.id);
-
+        flipCard(card.id);
     });
 })
 
+let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
+const flipCard = (imageId)=> {
+    let card = document.getElementById(`${imageId}`);
+    let randomIndex = Math.floor(Math.random()*srcImg.length);
+    document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${srcImg[randomIndex]}`);
+    card.classList.toggle("check");
+}
+
+// OR
+// assign the cards to random image source
+// when clicked get the image source of the first card and display it
+// in the next click get the image source of the second card
+// then check if they are the same
+// if they do display the second card
+// if they don't close both
 
 
 // on click call the displayImage function
@@ -52,13 +66,6 @@ Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
 // 8. if they do display the second images
 // 9. if not restore the first image to background image
 
-// OR
-// assign the cards to random image source
-// when clicked get the image source of the first card and display it
-// in the next click get the image source of the second card
-// then check if they are the same
-// if they do display the second card
-// if they don't close both
 
 
 
