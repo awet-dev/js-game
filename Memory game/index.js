@@ -36,12 +36,42 @@ Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
     });
 })
 
-let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
+let checkArray = [];
+let cardArray = [];
+
+let clickCounter = 1; // create counter to count how much is clicked
+
 const flipCard = (imageId)=> {
+    // array of the srcImg
+    let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
+    // get the card that is clicked at the moment
     let card = document.getElementById(`${imageId}`);
+    // generate random index to be used for assign a random srcImg
     let randomIndex = Math.floor(Math.random()*srcImg.length);
-    document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${srcImg[randomIndex]}`);
-    card.classList.toggle("check");
+    let randomSrcImg = srcImg[randomIndex]; // get the randomSrcImg
+
+    // check if it is the first click or the second click
+    if (clickCounter < 2) {
+        cardArray.push(card);
+        checkArray.push(randomSrcImg);
+        document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${randomSrcImg}`);
+        card.classList.toggle("check");
+        clickCounter++;
+    } else {
+        checkArray.push(randomSrcImg);
+        console.log(checkArray);
+        if (checkArray[0] == checkArray[1]) {
+            document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${randomSrcImg}`);
+            card.classList.toggle("check");
+        } else {
+            // flip the first cards back
+            cardArray[0].classList.toggle("check");
+        }
+        cardArray = [];
+        clickCounter--;
+        checkArray = [];
+
+    }
 }
 
 // OR
