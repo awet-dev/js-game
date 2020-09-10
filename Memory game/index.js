@@ -13,11 +13,11 @@ Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
 let checkArray = []; // checkArray is to hold the randomly clicked pair srcImg
 let firstCard; // firstCard will save the first clicked card
 let clickCounter = 1; // create counter to count how many times is clicked
+// array of the srcImg
+let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
 
 // flipCard function to flip both cards if they are the same else turn the first card back
 const flipCard = (imageId)=> {
-    // array of the srcImg
-    let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
 
     // get the card that is clicked at the moment
     let card = document.getElementById(`${imageId}`);
@@ -41,6 +41,12 @@ const flipCard = (imageId)=> {
             // if they do display both of them
             document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${randomSrcImg}`);
             card.classList.toggle("check");
+            // remove the pair of image that are the same from the array
+            for( let i = 0; i < srcImg.length; i++) {
+                if ( srcImg[i] == randomSrcImg) {
+                    srcImg.splice(i, 1);
+                }
+            }
         } else {
             // if they dont flip the first cards back
             firstCard.classList.toggle("check");
