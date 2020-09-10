@@ -1,10 +1,8 @@
 
-// selected html elements of img
-let images = document.querySelectorAll("img");
-
 /* listen to the click event of specifically clicked card by selecting it with its ID
 And call the flipCard function */
-Array.from(document.querySelectorAll(".flip-card")).forEach(card => {
+let cardArray = Array.from(document.querySelectorAll(".flip-card"));
+cardArray.forEach(card => {
     card.addEventListener("click", ()=> {
         flipCard(card.id);
     });
@@ -18,7 +16,6 @@ let srcImg = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.
 
 // flipCard function to flip both cards if they are the same else turn the first card back
 const flipCard = (imageId)=> {
-
     // get the card that is clicked at the moment
     let card = document.getElementById(`${imageId}`);
 
@@ -47,6 +44,13 @@ const flipCard = (imageId)=> {
                     srcImg.splice(i, 1);
                 }
             }
+            // check if game is dane or yet
+            if (srcImg.length == 0) {
+                alert("CONGRATULATION YOU DID IT!");
+            }
+            // make card no more clickable if they much and are displayed
+            let cardIndex = cardArray.indexOf(card);
+            cardArray.splice(cardIndex, 1);
         } else {
             // if they dont flip the first cards back
             firstCard.classList.toggle("check");
@@ -58,13 +62,7 @@ const flipCard = (imageId)=> {
     }
 }
 
-// OR
-// assign the cards to random image source
-// when clicked get the image source of the first card and display it
-// in the next click get the image source of the second card
-// then check if they are the same
-// if they do display the second card
-// if they don't close both
+
 
 
 
