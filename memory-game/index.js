@@ -1,6 +1,6 @@
 /* listen to the click event of specifically clicked card by selecting it with its ID
 And call the flipCard function */
-let cardArray = Array.from(document.querySelectorAll(".flip-card"));
+let cardArray = Array.from(document.querySelectorAll(".flip"));
 cardArray.forEach(card => {
     card.addEventListener("click", ()=> {
         flipCard(card.id);
@@ -34,6 +34,16 @@ const flipCard = (imageId)=> {
     } else {
         // in second click check if both the randomSrcImg are same
         if (checkArray[0] == checkArray[1]) {
+            /*
+            cardArray.forEach(cardCheck => {
+                if (firstCard.id == cardCheck.id){
+                    cardCheck.classList.remove("flip");
+                }
+                if (card.id == cardCheck.id){
+                    cardCheck.classList.remove("flip");
+                }
+            })
+             */
             // if they do display both of them
             document.querySelector(`#${card.id} .flip-card-back img`).setAttribute("src", `../share/images/${randomSrcImg}`);
             card.classList.toggle("check");
@@ -61,8 +71,8 @@ const flipCard = (imageId)=> {
     }
 }
 
-// in the first test get the id of the card  and put them in array
-// in the second test get the id of the card only if they match
+
+// in the second test get the id of the firstCard and second only if they match
 // remove the class attribute from the element so no more clickable
 // but if they don't match remove it from their array
 
