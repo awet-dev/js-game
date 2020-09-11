@@ -61,6 +61,14 @@ const flipCard = (imageId)=> {
     }
 }
 
+// in the first test get the id of the card  and put them in array
+// in the second test get the id of the card only if they match
+// remove the class attribute from the element so no more clickable
+// but if they don't match remove it from their array
+
+// and also to make it not flipping from other cards influence ->
+// check if the if firstCard has a class attribute
+
 
 
 
