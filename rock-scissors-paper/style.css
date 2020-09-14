@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+}
+
+img {
+  width: 20%;
+  height: auto;
+  margin: 3vw;
+}
+
+.border {
+  border: 1px solid gray;
+  width: 50%;
+  margin: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
