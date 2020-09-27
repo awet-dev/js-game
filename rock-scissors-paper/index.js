@@ -53,7 +53,7 @@ rest.addEventListener("click", ()=> {
     clearInterval(intervalFun);
     scoreComp = 0;
     scorePlayer = 0;
-    playerScore.innerHTML = `player score : ${playerScore}`
+    playerScore.innerHTML = `player score : ${scorePlayer}`
     compScore.innerHTML = `${scoreComp} : computer score`
     result.innerHTML = 'select your weapon';
 });
