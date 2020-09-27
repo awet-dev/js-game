@@ -82,16 +82,10 @@ for (let i = 0; i < 12; i++) {
     srcImg.splice(randomIndex, 1);
 }
 
-// add soundEffect that react if you win or loose
-const soundEffect = ()=> {
-    let soundLoose = new Audio("../share/sound/loose.mp3");
-    let soundWin = new Audio("../share/sound/win-sound.mp3");
-    if (timer == 25) {
-        soundLoose.play();
-    } else if (winCounter == 6) {
-        soundWin.play();
-    }
-}
+// listen to the click event of the reset btn to reset the game
+document.querySelector("#reset").addEventListener("click", ()=> {
+    location.reload();
+})
 
 let cardArray = Array.from(document.querySelectorAll(".flip-card"));
 cardArray.forEach(card => {
@@ -102,21 +96,21 @@ cardArray.forEach(card => {
         timer++;
         if (timer < 25) {
             if (clickCounter < 2) {
+                firstCard = card;
+                firstCard.classList.add("disable");
                 card.classList.toggle("check");
-                card.classList.add("disable");
                 let cardId = card.getAttribute("id");
                 let cardImg = document.querySelector(`#${cardId} .flip-card-inner .flip-card-back img`).getAttribute("src");
-                firstCard = card;
                 checkImgArray.push(cardImg);
                 clickCounter++;
             } else {
                 card.classList.toggle("check");
-                card.classList.add("disable")
                 let cardId = card.getAttribute("id");
                 let cardImg = document.querySelector(`#${cardId} .flip-card-inner .flip-card-back img`).getAttribute("src");
                 checkImgArray.push(cardImg);
                 setTimeout(()=> {
-                    if (checkImgArray[0] == checkImgArray[1]) {
+                    if (checkImgArray[0] === checkImgArray[1]) {
+                        card.classList.add("disable")
                         progress += 16.67; // increment the progress when ever srcImg matches
                         document.querySelector(".progress-bar").style.width = `${progress}%`;
                         winCounter++;
@@ -124,8 +118,8 @@ cardArray.forEach(card => {
                             soundEffect();
                             const d1 = document.querySelector('.navbar');
                             d1.insertAdjacentHTML('afterend', `<div class="alert alert-success mt-2" role="alert">\n
-                        <strong>Congratulation!</strong> If you want to play one more, <strong>Click Reset</strong>.\n
-                        </div>`);
+                            <strong>Congratulation!</strong> If you want to play one more, <strong>Click Reset</strong>.\n
+                            </div>`);
                         }
                     } else {
                         // if they don't match flip both the cards back
@@ -150,6 +144,17 @@ cardArray.forEach(card => {
     });
 
 })
+
+// add soundEffect that react if you win or loose
+const soundEffect = ()=> {
+    let soundLoose = new Audio("../share/sound/loose.mp3");
+    let soundWin = new Audio("../share/sound/win-sound.mp3");
+    if (timer == 25) {
+        soundLoose.play();
+    } else if (winCounter == 6) {
+        soundWin.play();
+    }
+}
 
 
 

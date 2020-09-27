@@ -1,51 +1,61 @@
-// listen to the reset btn to reload the page
-document.querySelector(".btn-outline-info").addEventListener("click", ()=> {
-    location.reload();
-});
-
-// card running with setInterval function
-let imgCard = ["Rock", "Scissors", "Paper"];
-
-// result msg html element
-let result = document.querySelector(".result-msg");
-
-let playerScore = 0;
-let compScore = 0;
-let randomCard;
-document.querySelector(".player-score").innerHTML = `${playerScore}`;
-document.querySelector(".computer-score").innerHTML = `${compScore}`;
-
-intervalFun = setInterval(()=> {
-    let randomIndex = Math.floor(Math.random()*imgCard.length);
-    randomCard = imgCard[randomIndex];
-}, 50);
-
-// select the images to listen for the click event
+const rest = document.querySelector(".rest");
+const playerScore = document.querySelector(".player-score");
+const compScore = document.querySelector(".comp-score");
 const images = document.querySelectorAll("img");
-images.forEach(image => {
-    image.addEventListener("click", ()=> {
-        // computer pick
-        const computerPick = imgCard[Math.floor(Math.random()*imgCard.length)];
+const result = document.querySelector(".result");
 
-        clearTimeout(intervalFun);
-        if (randomCard == image.id && randomCard == computerPick) {
-            playerScore++;
-            compScore++;
-            result.innerHTML = "both"
-        } else if (randomCard == image.id) {
-           // increment the player score
-           playerScore++;
-           // display get card msg
-           result.innerHTML = "player get it"
-       } else if (randomCard == computerPick) {
-           // increment the comp score
-           compScore++;
-           // display get card msg
-            result.innerHTML = "computer get it"
-       } else {
-           // display none of both
-            result.innerHTML = "no one get it"
-       }
+const card = ['scissor', 'rock', 'paper'];
+let randomCard;
+let scorePlayer = 0;
+let scoreComp = 0;
+
+let intervalFun = setInterval(()=> {
+    let randomIndex = Math.floor(Math.random()*card.length);
+    randomCard = card[randomIndex];
+}, 100)
+
+
+images.forEach(image => {
+    image.addEventListener('click', () => {
+        let comp = card[Math.floor(Math.random()*card.length)];
+        if (scorePlayer == 30 || scoreComp == 30) {
+            clearInterval(intervalFun);
+            if (scoreComp > scorePlayer) {
+                let winner = 'Computer'
+                result.innerHTML = `The winner is ${winner}`
+            } else if (scorePlayer == scoreComp) {
+                result.innerHTML = `They have equal points`
+            } else {
+                result.innerHTML = `The winner is Player`
+            }
+            image.classList.add('disable')
+        } else if (image.id == randomCard && comp == randomCard) {
+            scorePlayer++;
+            scoreComp++;
+            playerScore.innerHTML = `player score : ${scorePlayer}`;
+            compScore.innerHTML = `${scoreComp} : computer score`
+            result.innerHTML = 'they guess both the card'
+        } else if (image.id == randomCard) {
+            scorePlayer++;
+            playerScore.innerHTML = `player score : ${scorePlayer}`
+            result.innerHTML = 'player guesses the card'
+        } else if (comp == randomCard) {
+            scoreComp++;
+            compScore.innerHTML = `${scoreComp} : computer score`
+            result.innerHTML = 'comp guesses the card'
+        } else {
+            result.innerHTML = 'no one guesses the card'
+        }
     })
 })
+
+rest.addEventListener("click", ()=> {
+    clearInterval(intervalFun);
+    scoreComp = 0;
+    scorePlayer = 0;
+    playerScore.innerHTML = `player score : ${playerScore}`
+    compScore.innerHTML = `${scoreComp} : computer score`
+    result.innerHTML = 'select your weapon';
+});
+
 
