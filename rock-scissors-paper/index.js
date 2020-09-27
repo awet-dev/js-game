@@ -9,7 +9,7 @@ let randomCard;
 let scorePlayer = 0;
 let scoreComp = 0;
 
-let intervalFun = setInterval(()=> {
+setInterval(()=> {
     let randomIndex = Math.floor(Math.random()*card.length);
     randomCard = card[randomIndex];
 }, 100)
@@ -19,7 +19,6 @@ images.forEach(image => {
     image.addEventListener('click', () => {
         let comp = card[Math.floor(Math.random()*card.length)];
         if (scorePlayer == 30 || scoreComp == 30) {
-            clearInterval(intervalFun);
             if (scoreComp > scorePlayer) {
                 let winner = 'Computer'
                 result.innerHTML = `The winner is ${winner}`
@@ -28,7 +27,6 @@ images.forEach(image => {
             } else {
                 result.innerHTML = `The winner is Player`
             }
-            image.classList.add('disable')
         } else if (image.id == randomCard && comp == randomCard) {
             scorePlayer++;
             scoreComp++;
@@ -50,7 +48,6 @@ images.forEach(image => {
 })
 
 rest.addEventListener("click", ()=> {
-    clearInterval(intervalFun);
     scoreComp = 0;
     scorePlayer = 0;
     playerScore.innerHTML = `player score : ${scorePlayer}`
